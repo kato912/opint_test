@@ -14,6 +14,14 @@ mongoose.connect('mongodb+srv://admin:adminadmin123@cluster0.teg5tvb.mongodb.net
 
 global.loggedIn = null;
 
+const timeoutMiddleware = (req, res, next) => {
+  const timeout = 5000;
+  req.setTimeout(timeout);
+  res.setTimeout(timeout);
+  next();
+};
+
+
 /// controllers
 const Homenologin = require('./controllers/HomeNOloginCON');
 const login = require('./controllers/loginCON');
@@ -100,7 +108,7 @@ app.get('/adminn',redirenouser,delqrmiddl,adminn,(req, res) => {
       res.send('Welcome to the website!');
   }
 });
-app.post('/getpoint',Urlgen,qrcode,(req, res) => {
+app.post('/getpoint',Urlgen,timeoutMiddleware,qrcode,timeoutMiddleware,(req, res) => {
   const user = req.user;
   if (user) {
       res.send(`Welcome back, ${user.email}!`);
@@ -132,7 +140,7 @@ app.get(realURL, addpoint,(req, res) => {
 });
 
 ///
-app.get('/dtqrcode' , delqr);
+app.get('/dtqrcode' ,timeoutMiddleware,delqr);
 
 app.listen(port, () => {
 console.log("Web run on port : " ,port);
