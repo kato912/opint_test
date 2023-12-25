@@ -116,11 +116,20 @@ const readFileAsync = promisify(fs.readFile);
       const data = await readFileAsync("URL.json");
       const URL = JSON.parse(data);
       console.log(URL.URL);
-      app.get(URL.URL, addpoint);
+    var realURL = URL.URL;
     } catch (error) {
       console.error(`Error reading URL.json: ${error}`);
     }
   })();
+
+app.get(realURL, addpoint,(req, res) => {
+  const user = req.user;
+  if (user) {
+      res.send(`Welcome back, ${user.email}!`);
+  } else {
+      res.send('Welcome to the website!');
+  }
+});
 
 ///
 app.get('/dtqrcode' , delqr);
