@@ -116,7 +116,7 @@ app.post('/getpoint',Urlgen,timeoutMiddleware,qrcode,timeoutMiddleware,(req, res
       res.send('Welcome to the website!');
   }
 });
-
+let realURL;
 const { promisify } = require('util');
 const readFileAsync = promisify(fs.readFile);
 (async () => {
@@ -124,7 +124,7 @@ const readFileAsync = promisify(fs.readFile);
       const data = await readFileAsync("URL.json");
       const URL = JSON.parse(data);
       console.log(URL.URL);
-    var realURL = URL.URL;
+      realURL = URL.URL;
     } catch (error) {
       console.error(`Error reading URL.json: ${error}`);
     }
