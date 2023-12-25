@@ -120,22 +120,28 @@ app.post('/dtqrcode' ,delqr,timeoutMiddleware,admin);
 const { promisify } = require('util');
 const readFileAsync = promisify(fs.readFile);
 (async () => {
-    try {
-      const data = await readFileAsync("URL.json");
-      const URL = JSON.parse(data);
-      console.log(URL.URL);
-      app.get(URL.URL,addpoint,(req, res) => {
+  try {
+    const data = await readFileAsync("URL.json");
+    const URL = JSON.parse(data);
+    console.log(URL.URL);
+
+    // Make sure the value of URL.URL is valid for the route path
+    if (typeof URL.URL === 'string' && URL.URL.trim() !== '') {
+      app.get(URL.URL, addpoint, (req, res) => {
         const user = req.user;
         if (user) {
-            res.send(`Welcome back, ${user.email}!`);
+          res.send(`Welcome back, ${user.email}!`);
         } else {
-            res.send('Welcome to the website!');
+          res.send('Welcome to the website!');
         }
       });
-    } catch (error) {
-      console.error(`Error reading URL.json: ${error}`);
+    } else {
+      console.error('Invalid or empty URL value from URL.json');
     }
-  })();
+  } catch (error) {
+    console.error(`Error reading URL.json: ${error}`);
+  }
+})();
 
 ///
 
