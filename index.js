@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const expressSession = require('express-session');
 const flash = require('connect-flash');
 const fs = require('fs');
-
+const cookieParser = require('cookie-parser');
 
 
 mongoose.connect('mongodb+srv://admin:adminadmin123@cluster0.teg5tvb.mongodb.net/?retryWrites=true&w=majority', {
@@ -43,6 +43,7 @@ app.use('/public/', express.static('./public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(flash());
+app.use(cookieParser());
 
 app.use(expressSession({
     secret: "node secret",
@@ -55,17 +56,58 @@ app.use("*" , (req,res,next)=>{
     next()
 })
 
+app.use((req, res, next) => {
+  const userCookie = req.cookies.user;
+
+  // Attach user information to the request object
+  req.user = userCookie || null;
+
+  next();
+});
+
 app.set('view engine' , 'ejs');
 app.get('/',redire,Homenologin);
-app.get('/Home',redirenouser,Home);
-app.get('/login',redire,login);
-app.get('/register',redire,register);
+app.get('/Home',redirenouser,Home,(req, res) => {
+  const user = req.user;
+  if (user) {
+      res.send(`Welcome back, ${user.email}!`);
+  } else {
+      res.send('Welcome to the website!');
+  }
+});
+app.get('/login',redire,login , (req,res)=>{
+  const { email,password } = req.body;
+  res.cookie('user', {email});
+  res.send('Login successful');
+});
+app.get('/register',redire,register,);
 app.post('/user/register',redire,storeCON);
 app.post('/user/login',redire,loginsystem);
 app.get('/logout',logout)
-app.get('/admin',admin);
-app.get('/adminn',adminn);
-app.post('/getpoint',Urlgen,qrcode);
+app.get('/admin',redirenouser,genqrmiddl,admin,(req, res) => {
+  const user = req.user;
+  if (user) {
+      res.send(`Welcome back, ${user.email}!`);
+  } else {
+      res.send('Welcome to the website!');
+  }
+});
+app.get('/adminn',redirenouser,delqrmiddl,adminn,(req, res) => {
+  const user = req.user;
+  if (user) {
+      res.send(`Welcome back, ${user.email}!`);
+  } else {
+      res.send('Welcome to the website!');
+  }
+});
+app.post('/getpoint',Urlgen,qrcode,(req, res) => {
+  const user = req.user;
+  if (user) {
+      res.send(`Welcome back, ${user.email}!`);
+  } else {
+      res.send('Welcome to the website!');
+  }
+});
 
 const { promisify } = require('util');
 const readFileAsync = promisify(fs.readFile);
@@ -73,7 +115,7 @@ const readFileAsync = promisify(fs.readFile);
     try {
       const data = await readFileAsync("URL.json");
       const URL = JSON.parse(data);
-        console.log(URL.URL);
+      console.log(URL.URL);
       app.get(URL.URL, addpoint);
     } catch (error) {
       console.error(`Error reading URL.json: ${error}`);
