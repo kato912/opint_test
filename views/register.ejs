@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="/user/register" method="POST">
+            <% if (errors != null && errors.length > 0) {%>
+                <% for (let i = 0; i < errors.length; i++) { %>
+                    <p class="error">
+                        <%= errors[i] %>
+                    </p>
+                <% } %>
+            <% } %>
+        
+            <div>
+                <p>email</p>
+                <input class="email" type="email" name="email">
+            </div>
+            <div>
+                <p>Name</p>
+                <input class="Name" type="text" name="Name">
+            </div>
+            <div>
+                <p>Name หลัง</p>
+                <input class="LastName" type="text" name="LastName">
+            </div>
+            <select class="Class" name="Class">
+                <option value="ม.1">ม.1</option>
+                <option value="ม.2">ม.2</option>
+                <option value="ม.3">ม.3</option>
+                <option value="ม.4">ม.4</option>
+                <option value="ม.5">ม.5</option>
+                <option value="ม.6">ม.6</option>
+            </select>
+            <p>ห้อง</p>
+            <select class="room" name="room">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+            </select>
+            <div>
+                <p>รหัสประจำตัวนักเรียน</p>
+                <input class="pass" type="password" name="password">
+            </div>
+            <div>
+            <button class="regis" type="submit">สมัคร</button>
+        </form>
+    </form>
+    <br>
+</body>
+</html>

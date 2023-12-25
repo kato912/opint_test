@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1><%= UserData.Name + ' ' + UserData.LastName %></h1>
+    <h2>Yout point</h2>
+    <h1><%= UserData.point %></h1>
+    <h3>ประวัติคะแนน</h3>
+    <% if (UserData.allday.length > 0) { %>
+        <% for (let i = UserData.allday.length; i > 0; i--) { %>
+            <p class="hiss">
+                <%= UserData.allday[i] %>
+            </p>
+        <% } %>
+    <% } %>
+    <% if(UserData.Admin){%>
+        <a href="/admin">admin</a>
+        <br>
+    <% } %>
+    <a class="logout" href="/logout">ออกจากระบบ</a>
+</body>
+</html>

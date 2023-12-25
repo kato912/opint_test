@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body>
+    <form action="/user/login" method="POST">
+    <div>
+        <p>email</p>
+        <input class="email" type="text" name="email">
+    </div>
+    <div>
+        <p>รหัสประจำตัวนักเรียน</p>
+        <input class="pass" type="password" name="password">
+    </div>
+    <br>
+        <button class="login">login</button>
+    </form>
+    <p>ไม่มีรหัสมัครก่อนน้องง <a href="/register">สมัคร</a></p>
+</body>
+</html>
