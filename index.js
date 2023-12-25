@@ -73,6 +73,7 @@ const readFileAsync = promisify(fs.readFile);
     try {
       const data = await readFileAsync("URL.json");
       const URL = JSON.parse(data);
+        console.log(URL.URL);
       app.get(URL.URL, addpoint);
     } catch (error) {
       console.error(`Error reading URL.json: ${error}`);
