@@ -47,7 +47,6 @@ const UserSchema = new Schema({
 UserSchema.pre('save', async function (next) {
     const user = this;
     if (this.isNew) {
-        this.StudentID = user.password;
         this.haveqr = false;
         this.Admin = false;
         this.allday = ['0  +0'];
