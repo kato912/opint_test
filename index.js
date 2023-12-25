@@ -8,7 +8,7 @@ const fs = require('fs');
 
 
 
-mongoose.connect('mongodb+srv://admin:adminadmin123@dbuser.ifbo4sx.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://admin:adminadmin123@cluster0.teg5tvb.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true
 });
 
