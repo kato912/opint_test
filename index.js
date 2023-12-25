@@ -63,8 +63,8 @@ app.get('/register',redire,register);
 app.post('/user/register',redire,storeCON);
 app.post('/user/login',redire,loginsystem);
 app.get('/logout',logout)
-app.get('/admin',redirenouser,genqrmiddl,admin);
-app.get('/adminn',redirenouser,delqrmiddl,adminn);
+app.get('/admin',admin);
+app.get('/adminn',adminn);
 app.post('/getpoint',Urlgen,qrcode);
 
 const { promisify } = require('util');
