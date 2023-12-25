@@ -67,7 +67,7 @@ app.use((req, res, next) => {
 
 ////set timeout baby
 const timeoutMiddleware = (req, res, next) => {
-  const timeout = 50000;
+  const timeout = 500000;
   req.setTimeout(timeout);
   res.setTimeout(timeout);
   next();
