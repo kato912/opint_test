@@ -1,7 +1,7 @@
 const fs = require('fs');
 const User = require('../models/User');
 
-module.exports = async (req,res) =>{
+module.exports = async (req,res,next) =>{
     const userData = await User.findById(req.session.userId);
     const {day,Pnum} = req.body;
     const allday = {
@@ -18,7 +18,7 @@ module.exports = async (req,res) =>{
         userData.haveqr = true;
         await userData.save();
         console.log('suusssdusdad');
-        res.redirect('/adminn');
+        next();
     })
 
 }

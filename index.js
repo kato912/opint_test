@@ -8,7 +8,7 @@ const fs = require('fs');
 const cookieParser = require('cookie-parser');
 const axios = require('axios');
 
-mongoose.connect('mongodb+srv://admin:adminadmin123@cluster0.teg5tvb.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://admin:adminadmin123@dbuser.ifbo4sx.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true
 });
 
@@ -108,7 +108,7 @@ app.get('/adminn',redirenouser,delqrmiddl,adminn,(req, res) => {
       res.send('Welcome to the website!');
   }
 });
-app.post('/getpoint',Urlgen,timeoutMiddleware,qrcode,timeoutMiddleware,(req, res) => {
+app.post('/getpoint',Urlgen,timeoutMiddleware,qrcode,timeoutMiddleware,adminn,(req, res) => {
   const user = req.user;
   if (user) {
       res.send(`Welcome back, ${user.email}!`);
@@ -116,7 +116,7 @@ app.post('/getpoint',Urlgen,timeoutMiddleware,qrcode,timeoutMiddleware,(req, res
       res.send('Welcome to the website!');
   }
 });
-
+app.post('/dtqrcode' ,delqr,timeoutMiddleware,admin);
 const { promisify } = require('util');
 const readFileAsync = promisify(fs.readFile);
 (async () => {
@@ -138,7 +138,7 @@ const readFileAsync = promisify(fs.readFile);
   })();
 
 ///
-app.get('/dtqrcode' ,timeoutMiddleware,delqr);
+
 
 app.listen(port, () => {
 console.log("Web run on port : " ,port);
