@@ -6,21 +6,13 @@ const expressSession = require('express-session');
 const flash = require('connect-flash');
 const fs = require('fs');
 const cookieParser = require('cookie-parser');
-
+const axios = require('axios');
 
 mongoose.connect('mongodb+srv://admin:adminadmin123@cluster0.teg5tvb.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true
 });
 
 global.loggedIn = null;
-
-const timeoutMiddleware = (req, res, next) => {
-  const timeout = 5000;
-  req.setTimeout(timeout);
-  res.setTimeout(timeout);
-  next();
-};
-
 
 /// controllers
 const Homenologin = require('./controllers/HomeNOloginCON');
@@ -73,6 +65,14 @@ app.use((req, res, next) => {
   next();
 });
 
+////set timeout baby
+const timeoutMiddleware = (req, res, next) => {
+  const timeout = 5000;
+  req.setTimeout(timeout);
+  res.setTimeout(timeout);
+  next();
+};
+
 app.set('view engine' , 'ejs');
 app.get('/',redire,Homenologin);
 app.get('/Home',redirenouser,Home,(req, res) => {
@@ -116,7 +116,7 @@ app.post('/getpoint',Urlgen,timeoutMiddleware,qrcode,timeoutMiddleware,(req, res
       res.send('Welcome to the website!');
   }
 });
-let realURL;
+
 const { promisify } = require('util');
 const readFileAsync = promisify(fs.readFile);
 (async () => {
@@ -124,20 +124,18 @@ const readFileAsync = promisify(fs.readFile);
       const data = await readFileAsync("URL.json");
       const URL = JSON.parse(data);
       console.log(URL.URL);
-      realURL = URL.URL;
+      app.get(URL.URL,addpoint,(req, res) => {
+        const user = req.user;
+        if (user) {
+            res.send(`Welcome back, ${user.email}!`);
+        } else {
+            res.send('Welcome to the website!');
+        }
+      });
     } catch (error) {
       console.error(`Error reading URL.json: ${error}`);
     }
   })();
-
-app.get(realURL, addpoint,(req, res) => {
-  const user = req.user;
-  if (user) {
-      res.send(`Welcome back, ${user.email}!`);
-  } else {
-      res.send('Welcome to the website!');
-  }
-});
 
 ///
 app.get('/dtqrcode' ,timeoutMiddleware,delqr);
