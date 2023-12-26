@@ -7,7 +7,7 @@ module.exports = async (req, res, next) => {
         const xxyxx = randomstring.generate(10);
         const Urladdpoint = `https://energetic-duck-buckle.cyclic.app/${xxyxx}`;
         const url = Urladdpoint;
-        const outputFilePath = 'public/img/qrcode.png';
+        const outputFilePath = '/public/img/qrcode.png';
 
         await new Promise((resolve, reject) => {
             qr.toFile(outputFilePath, url, (err) => {
