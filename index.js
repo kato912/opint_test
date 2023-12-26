@@ -124,6 +124,37 @@ const readFileAsync = promisify(fs.readFile);
       const data = await readFileAsync("URL.json");
       const URL = JSON.parse(data);
       console.log(URL.URL);
+      app.get('/adminn',redirenouser,delqrmiddl,(req, res) => {
+        qr.toDataURL(URL.URL,(err,qrCodeurl)=>{
+          if(err){
+            res.status(500).send('Error888 Vip');
+          }
+          else{
+            res.send(`
+            
+                        <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>admin</title>
+            </head>
+            <body>
+                <h1>Yourqrcode</h1>
+
+                <img src="${qrCodeurl}" alt="">
+            </div>
+            <form action="/dtqrcode" method="POST">
+                <button>del</button>
+            </form>
+            <a href="/Home">Home</a>
+            </body>
+            </html>
+            
+            `);
+          }
+        });
+        });
       app.get(URL.URL,addpoint,(req, res) => {
         const user = req.user;
         if (user) {
