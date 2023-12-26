@@ -9,18 +9,6 @@ module.exports = async (req, res, next) => {
         const url = Urladdpoint;
         const outputFilePath = '/public/img/qrcode.png';
 
-        await new Promise((resolve, reject) => {
-            qr.toFile(outputFilePath, url, (err) => {
-                if (err) {
-                    console.error(`Error generating QR code: ${err}`);
-                    reject(err);
-                } else {
-                    console.log(`QR code generated and saved to ${outputFilePath}`);
-                    resolve();
-                }
-            });
-        });
-
         const URLpoint = {
             URL: Urladdpoint,
         };
