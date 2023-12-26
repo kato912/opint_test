@@ -15,14 +15,14 @@ const UserSchema = new Schema({
         type: String,
         required: [true , 'Please provide lastname']
     },
-    Class:{
-        type: String,
-        required: [true]
-    },
-    room:{
-        type: String,
-        required: [true]
-    },
+    // Class:{
+    //     type: String,
+    //     required: [true]
+    // },
+    // room:{
+    //     type: String,
+    //     required: [true]
+    // },
     StudentID:{
         type: String
     },
