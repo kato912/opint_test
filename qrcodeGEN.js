@@ -5,7 +5,7 @@ const randomstring = require('randomstring');
 module.exports = async (req, res, next) => {
     try {
         const xxyxx = randomstring.generate(10);
-        const Urladdpoint = `/${xxyxx}`;
+        const Urladdpoint = `https://point-test.onrender.com/${xxyxx}`;
         const url = Urladdpoint;
         const outputFilePath = 'public/img/qrcode.png';
 
