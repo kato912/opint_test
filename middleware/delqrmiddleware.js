@@ -2,7 +2,7 @@ const User = require('../models/User');
 module.exports = async (req,res,next) =>{
     let UserData = await User.findById(req.session.userId)
     if (!UserData.Admin){
-        return  res.redirect('/Home');
+        return  res.redirect('/');
     }
     else{
         if(UserData.haveqr){

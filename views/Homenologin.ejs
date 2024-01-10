@@ -3,12 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>about</title>
+    <link rel="stylesheet" href="../public/css/background.css">
+    <link rel="stylesheet" href="../public/css/navbar.css">
+    <link rel="stylesheet" href="../public/css/about.css">
 </head>
 <body>
-    <h1>Home page</h1>
-    <h2>เข้าสู่ระบบก่อนสัตว์</h2>
-    <a  class="login-but" href="/login">Login</a>
-    <a  class="regis-but" href="/register">Register</a>
+    <div class="wrapper">
+   
+        <!-- start navbar -->
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>
+                    <img src="../public/svg/logoschool.svg" alt="school_logo" width="50px" class="logoschool">
+                </p>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="/" class="link active">หน้าแรก</a></li>
+                    <li><a href="/About" class="link">เกี่ยวกับ</a></li>
+                </ul>
+            </div>
+            
+            <form action="/logout" method="post">
+                <div class="nav-button">
+                    <button class="btn" id="logoutBtn">ออกจากระบบ</button>
+                </div>
+            </form> 
+            
+        </nav>
+        <!-- end navbar -->
+
+        <!-- start about contkc -->
+        <div class="aboutpage">
+            <div class="aboutcontent">
+                <div>
+                    <div class="kc-space">
+                        <div class="kc-space-item">
+                            <center>
+                                <div class="kc-image" loading="lazy">
+                                    <img src="../picture/school_logo.jpg" alt="sclogo" class="kc-image-img">
+                                </div>
+                            </center>
+                        </div>
+                        <div class="kc-space-item">
+                            <h2 class="kc-typography" style="color: white; text-align: center;">ช่องทางการติตตามกิจกรรม</h2>
+                        </div>
+                    </div>
+                    <div class="contact">
+                        
+                        <!-- start box facebook -->
+                        <a href="https://web.facebook.com/KuchinaraiSchoolSPM24" class="kc-typography" target="_blank" rel="noopener noreferrer">
+                            <div class="contactsocial">
+                                <div class="icon">
+                                    <span class="kcicon kcicon-facebook" role="img" aria-label="facebook">
+                                        <svg viewBox="64 64 896 896" focusable="false" data-icon="facebook" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                                            <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-32 736H663.9V602.2h104l15.6-120.7H663.9v-77.1c0-35 9.7-58.8 59.8-58.8h63.9v-108c-11.1-1.5-49-4.8-93.2-4.8-92.2 0-155.3 56.3-155.3 159.6v89H434.9v120.7h104.3V848H176V176h672v672z"></path>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <span class="kc-typography">โรงเรียนกุฉินารายณ์</span>
+                            </div>
+                        </a>
+                        <!-- end box facebook -->
+
+                        <!-- start box facebook 2 
+                        <a href="https://web.facebook.com/studentcouncilofkuchinaraischool" class="kc-typography" target="_blank" rel="noopener noreferrer" -->
+                            <div class="contactsocial">
+                                <div class="icon">
+                                    <span class="kcicon kcicon-facebook" role="img" aria-label="facebook">
+                                        <svg viewBox="64 64 896 896" focusable="false" data-icon="facebook" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                                            <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-32 736H663.9V602.2h104l15.6-120.7H663.9v-77.1c0-35 9.7-58.8 59.8-58.8h63.9v-108c-11.1-1.5-49-4.8-93.2-4.8-92.2 0-155.3 56.3-155.3 159.6v89H434.9v120.7h104.3V848H176V176h672v672z"></path>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <span class="kc-typography">สภานักเรียนโรงเรียนกุฉินารายณ์</span>
+                            </div>
+                        </a>
+                        <!-- end box facebook2 -->
+
+                        <!-- start box ig 
+                        <a href="https://www.instagram.com/std.council.kc/" class="kc-typography" target="_blank" rel="noopener noreferrer" -->
+                            <div class="contactsocial">
+                                <div class="icon">
+                                    <span class="kcicon kcicon-instagram" role="img" aria-label="instagram">
+                                        <svg viewBox="64 64 896 896" focusable="false" data-icon="instagram" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                                            <path d="M512 306.9c-113.5 0-205.1 91.6-205.1 205.1S398.5 717.1 512 717.1 717.1 625.5 717.1 512 625.5 306.9 512 306.9zm0 338.4c-73.4 0-133.3-59.9-133.3-133.3S438.6 378.7 512 378.7 645.3 438.6 645.3 512 585.4 645.3 512 645.3zm213.5-394.6c-26.5 0-47.9 21.4-47.9 47.9s21.4 47.9 47.9 47.9 47.9-21.3 47.9-47.9a47.84 47.84 0 00-47.9-47.9zM911.8 512c0-55.2.5-109.9-2.6-165-3.1-64-17.7-120.8-64.5-167.6-46.9-46.9-103.6-61.4-167.6-64.5-55.2-3.1-109.9-2.6-165-2.6-55.2 0-109.9-.5-165 2.6-64 3.1-120.8 17.7-167.6 64.5C132.6 226.3 118.1 283 115 347c-3.1 55.2-2.6 109.9-2.6 165s-.5 109.9 2.6 165c3.1 64 17.7 120.8 64.5 167.6 46.9 46.9 103.6 61.4 167.6 64.5 55.2 3.1 109.9 2.6 165 2.6 55.2 0 109.9.5 165-2.6 64-3.1 120.8-17.7 167.6-64.5 46.9-46.9 61.4-103.6 64.5-167.6 3.2-55.1 2.6-109.8 2.6-165zm-88 235.8c-7.3 18.2-16.1 31.8-30.2 45.8-14.1 14.1-27.6 22.9-45.8 30.2C695.2 844.7 570.3 840 512 840c-58.3 0-183.3 4.7-235.9-16.1-18.2-7.3-31.8-16.1-45.8-30.2-14.1-14.1-22.9-27.6-30.2-45.8C179.3 695.2 184 570.3 184 512c0-58.3-4.7-183.3 16.1-235.9 7.3-18.2 16.1-31.8 30.2-45.8s27.6-22.9 45.8-30.2C328.7 179.3 453.7 184 512 184s183.3-4.7 235.9 16.1c18.2 7.3 31.8 16.1 45.8 30.2 14.1 14.1 22.9 27.6 30.2 45.8C844.7 328.7 840 453.7 840 512c0 58.3 4.7 183.2-16.2 235.8z"></path>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <span class="kc-typography">สภานักเรียนโรงเรียนกุฉินารายณ์</span>
+                            </div>
+                        </a>
+                        <!-- end box ig -->
+
+                        <!-- start tel box -->
+                        <a href="tel:043-851366" class="kc-typography" target="_blank" rel="noopener noreferrer">
+                            <div class="contactsocial">
+                                <div class="icon">
+                                    <span class="kcicon kcicon-phone" role="img" aria-label="phone">
+                                        <svg viewBox="64 64 896 896" focusable="false" data-icon="instagram" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                                            <path d="M877.1 238.7L770.6 132.3c-13-13-30.4-20.3-48.8-20.3s-35.8 7.2-48.8 20.3L558.3 246.8c-13 13-20.3 30.5-20.3 48.9 0 18.5 7.2 35.8 20.3 48.9l89.6 89.7a405.46 405.46 0 01-86.4 127.3c-36.7 36.9-79.6 66-127.2 86.6l-89.6-89.7c-13-13-30.4-20.3-48.8-20.3a68.2 68.2 0 00-48.8 20.3L132.3 673c-13 13-20.3 30.5-20.3 48.9 0 18.5 7.2 35.8 20.3 48.9l106.4 106.4c22.2 22.2 52.8 34.9 84.2 34.9 6.5 0 12.8-.5 19.2-1.6 132.4-21.8 263.8-92.3 369.9-198.3C818 606 888.4 474.6 910.4 342.1c6.3-37.6-6.3-76.3-33.3-103.4zm-37.6 91.5c-19.5 117.9-82.9 235.5-178.4 331s-213 158.9-330.9 178.4c-14.8 2.5-30-2.5-40.8-13.2L184.9 721.9 295.7 611l119.8 120 .9.9 21.6-8a481.29 481.29 0 00285.7-285.8l8-21.6-120.8-120.7 110.8-110.9 104.5 104.5c10.8 10.8 15.8 26 13.3 40.8z"></path>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <span class="kc-typography">043-851366</span>
+                            </div>
+                        </a>
+                        <!-- end tel box -->
+
+                        <!-- start email box -->
+                        <a href="tel:043-851366" class="kc-typography" target="_blank" rel="noopener noreferrer">
+                            <div class="contactsocial">
+                                <div class="icon">
+                                    <span class="kcicon kcicon-phone" role="img" aria-label="phone">
+                                        <svg viewBox="64 64 896 896" focusable="false" data-icon="instagram" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                                            <path d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 110.8V792H136V270.8l-27.6-21.5 39.3-50.5 42.8 33.3h643.1l42.8-33.3 39.3 50.5-27.7 21.5zM833.6 232L512 482 190.4 232l-42.8-33.3-39.3 50.5 27.6 21.5 341.6 265.6a55.99 55.99 0 0068.7 0L888 270.8l27.6-21.5-39.3-50.5-42.7 33.2z"></path>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <span class="kc-typography">office@kuchinarai.ac.th</span>
+                            </div>
+                        </a>
+                        <!-- end email box -->
+
+                        <!-- start web site -->
+                        <a href="http://www.kuchinarai.ac.th/" class="kc-typography" target="_blank" rel="noopener noreferrer">
+                            <div class="contactsocial">
+                                <div class="icon">
+                                    <span class="kcicon kcicon-website" role="img" aria-label="kcicon-website">
+                                        <svg viewBox="64 64 896 896" focusable="false" data-icon="web-site" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                                        </svg>
+                                    </span>
+                                </div>
+                                <span class="kc-typography">Kuchinarai website</span>
+                            </div>
+                        </a>
+                        <!-- end web site -->
+                        
+                    </div>
+                    <!-- end contact -->
+
+                    <!-- start video reccomment -->
+                        <!-- <div class="video-reccom">
+                            <div class="kc-rec">
+                                <h2 style="text-align: center; color: white;">แนะนำโรงเรียน</h2>
+                                <video src="../picture/KC Vlog _ Kuchinarai School พาชมโรงเรียน, แนะนำโครงการห้องเรียนพิเศษ! 🔬🧬.mp4" autoplay controls></video>
+                            </div>
+                        </div> -->
+                    <!-- end video reccomment -->
+
+                    <!-- start map box -->
+                    <div class="map">
+                        <div class="kc-typography">
+                            <h2 style="text-align: center;color: white;">แผนที่</h2>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3824.7497279249023!2d104.04185487398203!3d16.538727884210857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313d117c90eee297%3A0x18de80cb5bb9ab4e!2sKuchinarai%20School!5e0!3m2!1sen!2sth!4v1703519902769!5m2!1sen!2sth" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                    <!-- end map box -->
+
+                    <!-- start questions box-->
+                    <!-- <div class="_questions_lmsra_22"><h2 class="ant-typography css-dvh8du" style="text-align: center;">คำถามที่พบบ่อย</h2><div class="ant-collapse ant-collapse-icon-position-start ant-collapse-borderless ant-collapse-large css-dvh8du"><div class="ant-collapse-item" style="border: 0px;"><div class="ant-collapse-header" aria-expanded="false" aria-disabled="false" role="button" tabindex="0" cursorshover="true"><div class="ant-collapse-expand-icon"><span role="img" aria-label="right" class="anticon anticon-right ant-collapse-arrow"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path></svg></span></div><span class="ant-collapse-header-text">Openhouse มีอะไรให้ทำบ้าง ?</span></div></div><div class="ant-collapse-item" style="border: 0px;"><div class="ant-collapse-header" aria-expanded="false" aria-disabled="false" role="button" tabindex="0"><div class="ant-collapse-expand-icon"><span role="img" aria-label="right" class="anticon anticon-right ant-collapse-arrow"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path></svg></span></div><span class="ant-collapse-header-text">กิจกรรม Workshop มีการลงทะเบียนหน้างานแบบ Walk-in หรือไม่ ?</span></div></div><div class="ant-collapse-item" style="border: 0px;"><div class="ant-collapse-header" aria-expanded="false" aria-disabled="false" role="button" tabindex="0"><div class="ant-collapse-expand-icon"><span role="img" aria-label="right" class="anticon anticon-right ant-collapse-arrow"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path></svg></span></div><span class="ant-collapse-header-text">เดินทางมายังไง ?</span></div></div><div class="ant-collapse-item" style="border: 0px;"><div class="ant-collapse-header" aria-expanded="false" aria-disabled="false" role="button" tabindex="0" cursorshover="true"><div class="ant-collapse-expand-icon"><span role="img" aria-label="right" class="anticon anticon-right ant-collapse-arrow"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path></svg></span></div><span class="ant-collapse-header-text">เตรียมตัวยังไง เอาอะไรไปบ้าง ?</span></div></div><div class="ant-collapse-item" style="border: 0px;"><div class="ant-collapse-header" aria-expanded="false" aria-disabled="false" role="button" tabindex="0"><div class="ant-collapse-expand-icon"><span role="img" aria-label="right" class="anticon anticon-right ant-collapse-arrow"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path></svg></span></div><span class="ant-collapse-header-text">แต่งกายอย่างไรดี ?</span></div></div><div class="ant-collapse-item" style="border: 0px;"><div class="ant-collapse-header" aria-expanded="false" aria-disabled="false" role="button" tabindex="0"><div class="ant-collapse-expand-icon"><span role="img" aria-label="right" class="anticon anticon-right ant-collapse-arrow"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path></svg></span></div><span class="ant-collapse-header-text">ผู้ปกครอง หรือ คุณครูเข้าร่วมกิจกรรมได้หรือไม่ ?</span></div></div><div class="ant-collapse-item" style="border: 0px;"><div class="ant-collapse-header" aria-expanded="false" aria-disabled="false" role="button" tabindex="0"><div class="ant-collapse-expand-icon"><span role="img" aria-label="right" class="anticon anticon-right ant-collapse-arrow"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path></svg></span></div><span class="ant-collapse-header-text">มีประกาศนียบัตรหรือไม่ ?</span></div></div><div class="ant-collapse-item" style="border: 0px;"><div class="ant-collapse-header" aria-expanded="false" aria-disabled="false" role="button" tabindex="0"><div class="ant-collapse-expand-icon"><span role="img" aria-label="right" class="anticon anticon-right ant-collapse-arrow"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path></svg></span></div><span class="ant-collapse-header-text">กิจกรรมพี่พาน้องทัวร์ต่างจาก workshop อย่างไร</span></div></div></div></div> -->
+                    <!-- end questions box-->
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
 </body>
 </html>

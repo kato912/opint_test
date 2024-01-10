@@ -23,9 +23,9 @@ const UserSchema = new Schema({
     //     type: String,
     //     required: [true]
     // },
-    StudentID:{
-        type: String
-    },
+    // StudentID:{
+    //     type: String
+    // },
     password:{
         type: String,
         required: [true , 'Please provide password']
@@ -41,6 +41,9 @@ const UserSchema = new Schema({
     },
     haveqr:{
         type: Boolean
+    },
+    avata:{
+        type: String
     }
 })
 
@@ -51,6 +54,7 @@ UserSchema.pre('save', async function (next) {
         this.Admin = false;
         this.allday = ['0  +0'];
         this.point = 0;
+        this.avata = '../public/img/pofileUser_img/nopofile.png'
     }
     try {
         if (user.isModified('password') || user.isNew) {

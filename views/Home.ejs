@@ -1,26 +1,99 @@
+homepage.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>homepage</title>
+    <link rel="stylesheet" href="../css/background.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/homepage.css">
+    <style>
+        .btn-out {
+            width: 130px;
+            height: 40px;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.4);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: .3s ease;
+        }
+
+        .btn-out:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .content {
+            margin-bottom: 50px;
+            padding: 30px;
+        }
+
+        h3 {
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1><%= UserData.Name + ' ' + UserData.LastName %></h1>
-    <h2>Yout point</h2>
-    <h1><%= UserData.point %></h1>
-    <h3>ประวัติคะแนน</h3>
-    <% if (UserData.allday.length > 0) { %>
-        <% for (let i = UserData.allday.length; i > 0; i--) { %>
-            <p class="hiss">
-                <%= UserData.allday[i] %>
-            </p>
-        <% } %>
-    <% } %>
-    <% if(UserData.Admin){%>
-        <a href="/admin">admin</a>
-        <br>
-    <% } %>
-    <a class="logout" href="/logout">ออกจากระบบ</a>
+    <div class="wrapper">
+   
+        <!-- start navbar -->
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>
+                    <img src="../svg/logoschool.svg" alt="school_logo" width="50px" class="logoschool">
+                </p>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="/" class="link active">หน้าแรก</a></li>
+                    <li><a href="/About" class="link">เกี่ยวกับ</a></li>
+                </ul>
+            </div>
+            <div class="nav-button">
+                <button class="btn-out" id="logoutBtn">ออกจากระบบ</button>
+            </div>
+            
+        </nav>
+        <!-- end navbar -->
+
+        <div class="content">  
+            <div class="card">  
+              <div class="profile">
+                  <h1 class="heads">Welcome to kuchinarai student</h1>
+                  <h3 class="unheads">PROFILE</h3>
+                  <div class="box">
+                      <div class="avatar">
+                          <div class="avatar--t6-Pn">
+                              <div>
+                                  <figure class="content-image__figure--7vume">
+                                      <picture>
+                                          <source srcset="" type="image/webp">
+                                          <img src="<%= UserData.avata %>" alt="User avatar." loading="lazy" width="170px" height="170px">
+                                      </picture>
+                                  </figure>
+                              </div>
+                          </div>
+                      </div>
+                    <form action="/profile/upload" method="post" enctype="multipart/form-data">
+                        <input type="file" class="point-btn" name="avatar" />
+                        <button class="point-btn" >upload</button>
+                    </form>
+                      
+                      <div class="form-wrapper">
+                          <div class="text--gq6o- text--is-fixed-size--5i4oU text--is-xl---ywR- label--57-z9 label--is-dirty--oQgf4 label--is-error--PTn8Y basic-input--rrvny username-input--slW1S" data-t="username-input">
+                              <h2>Username: <%= UserData.Name + ' ' + UserData.LastName %></h2>
+                          </div>
+                          <span>
+                              <button class="point-btn"><%= UserData.point %> point</button>
+                              
+                          </span>
+                      </div>
+                  </div>
+                  
+              </div>
+          </div>
+          </div>
+   </div>
 </body>
 </html>

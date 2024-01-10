@@ -7,8 +7,10 @@ const flash = require('connect-flash');
 const fs = require('fs');
 const cookieParser = require('cookie-parser');
 const axios = require('axios');
+const qr = require('qrcode');
+const multer  = require('multer');
 
-mongoose.connect('mongodb+srv://admin:adminadmin123@cluster0.teg5tvb.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://admin:1234@users1.91wy4gi.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true
 });
 
@@ -30,6 +32,7 @@ const delqr = require('./controllers/delQR');
 const genqrmiddl = require('./middleware/genqrmiddleware');
 const delqrmiddl = require('./middleware/delqrmiddleware');
 const Urlgen = require('./qrcodeGEN');
+const pofile = require('./controllers/pofile');
 ///
 port = process.env.PORT || 4000;
 //Middleware
@@ -74,7 +77,22 @@ const timeoutMiddleware = (req, res, next) => {
 };
 
 app.set('view engine' , 'ejs');
-app.get('/',redire,Homenologin);
+app.get('/About',redirenouser,Homenologin,(req, res) => {
+  const user = req.user;
+  if (user) {
+      res.send(`Welcome back, ${user.email}!`);
+  } else {
+      res.send('Welcome to the website!');
+  }
+});
+app.get('/',redirenouser,Home,(req, res) => {
+  const user = req.user;
+  if (user) {
+      res.send(`Welcome back, ${user.email}!`);
+  } else {
+      res.send('Welcome to the website!');
+  }
+});
 app.get('/Home',redirenouser,Home,(req, res) => {
   const user = req.user;
   if (user) {
@@ -83,6 +101,15 @@ app.get('/Home',redirenouser,Home,(req, res) => {
       res.send('Welcome to the website!');
   }
 });
+app.get('/pofile',redirenouser,pofile,(req, res) => {
+  const user = req.user;
+  if (user) {
+      res.send(`Welcome back, ${user.email}!`);
+  } else {
+      res.send('Welcome to the website!');
+  }
+});
+
 app.get('/login',redire,login , (req,res)=>{
   const { email,password } = req.body;
   res.cookie('user', {email});
@@ -91,7 +118,7 @@ app.get('/login',redire,login , (req,res)=>{
 app.get('/register',redire,register,);
 app.post('/user/register',redire,storeCON);
 app.post('/user/login',redire,loginsystem);
-app.get('/logout',logout)
+app.post('/logout',logout)
 app.get('/admin',redirenouser,genqrmiddl,admin,(req, res) => {
   const user = req.user;
   if (user) {
@@ -100,7 +127,8 @@ app.get('/admin',redirenouser,genqrmiddl,admin,(req, res) => {
       res.send('Welcome to the website!');
   }
 });
-app.get('/adminn',redirenouser,delqrmiddl,adminn,(req, res) => {
+
+app.post('/getpoint',timeoutMiddleware,qrcode,timeoutMiddleware,adminn,(req, res) => {
   const user = req.user;
   if (user) {
       res.send(`Welcome back, ${user.email}!`);
@@ -108,14 +136,8 @@ app.get('/adminn',redirenouser,delqrmiddl,adminn,(req, res) => {
       res.send('Welcome to the website!');
   }
 });
-app.post('/getpoint',Urlgen,timeoutMiddleware,qrcode,timeoutMiddleware,adminn,(req, res) => {
-  const user = req.user;
-  if (user) {
-      res.send(`Welcome back, ${user.email}!`);
-  } else {
-      res.send('Welcome to the website!');
-  }
-});
+
+/////////////////////////////////////////////////////////////url//////////////////////////////////////////////////////
 app.post('/dtqrcode' ,delqr,timeoutMiddleware,admin);
 const { promisify } = require('util');
 const readFileAsync = promisify(fs.readFile);
@@ -130,11 +152,11 @@ const readFileAsync = promisify(fs.readFile);
             res.status(500).send('Error888 Vip');
           }
           else{
-            res.send('adminn');
+            res.render('adminn');
           }
         });
         });
-      app.get(URL.URL,addpoint,(req, res) => {
+      app.get('/KF89KSDsd5S',addpoint,(req, res) => {
         const user = req.user;
         if (user) {
             res.send(`Welcome back, ${user.email}!`);
@@ -147,7 +169,31 @@ const readFileAsync = promisify(fs.readFile);
     }
   })();
 
-///
+/////////////////////////////////upload pofile //////////////////////////////////////////////
+const User = require('./models/User');
+const storage = multer.diskStorage({
+  
+  destination: function (req, file, cb) {
+    cb(null, 'public/img/pofileUser_img/')
+  },
+  filename: async function (req, file, cb) {
+    const userData = await User.findById(req.session.userId);
+    cb(null,file.originalname);
+    userData.avata = `../public/img/pofileUser_img/${'filename:',file.originalname}` 
+    await userData.save();
+    console.log('filename:',file.originalname)
+  }
+})
+
+const upload = multer({ storage: storage })
+
+
+app.post('/profile/upload',upload.single('avatar'),(req,res)=>{
+  console.log('uploadPofile successfully!');
+  res.redirect('/');
+})
+
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 
 app.listen(port, () => {

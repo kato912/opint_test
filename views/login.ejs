@@ -2,22 +2,153 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../public/css/form.css">
+    <link rel="stylesheet" href="../public/css/navbar.css">
+    <title>Login & Registration</title>
 </head>
 <body>
-    <form action="/user/login" method="POST">
-    <div>
-        <p>email</p>
-        <input class="email" type="text" name="email">
+<div class="wrapper">
+    
+    <!-- start navbar -->
+    <nav class="nav">
+        <div class="nav-logo">
+            <p>
+                <img src="../public/svg/logoschool.svg" alt="school_logo" width="50px" class="logoschool">
+            </p>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="page/homepage.html" class="link active">หน้าแรก</a></li>
+                <li><a href="page/about.html" class="link">เกี่ยวกับ</a></li>
+            </ul>
+        </div>
+        <div class="nav-button">
+            <button class="btn white-btn" id="loginBtn" onclick="login()">เข้าสู่ระบบ</button>
+            <button class="btn" id="registerBtn" onclick="register()">สมัครสมาชิก</button>
+        </div>
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+        </div>
+    </nav>
+    <!-- end navbar -->
+
+    <!-----------------------------start Form boxๆ เสียงนี้พันธุ์ซามอยด์ ----------------------------------->    
+    <div class="form-box">
+        
+        <!-------------------start login boxๆ พันธุ์คอร์กี้้ -------------------------->
+
+        <div class="login-container" id="login">
+            <form action="/user/login" method="POST">
+            <div class="top">
+                <header>เข้าสู่ระบบ</header>
+            </div>
+            <div class="input-box">
+                <input type="text" class="input-field" placeholder="บัญชี หรือ อีเมล" name="email">
+                <i class="bx bx-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" placeholder="เลขประจำตัวนักเรียน" name="password">
+                <i class="bx bx-lock-alt"></i>
+            </div>
+            <div class="input-box">
+                <button type="submit" class="submit">Login</button>
+            </div>
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" id="login-check">
+                    <label for="login-check">จดจำรหัสผ่าน</label>
+                </div>
+            </form>
+                <div class="two">
+                    <span>หากคุณยังไม่ได้สมัครบัญชีกรุณา <a href="#" onclick="register()" style="color: white;">สมัครสมาชิก</a></span>
+                </div>
+            </div>
+        </div>
+        <!------------------- registration form -------------------------->
+        <div class="register-container" id="register">
+            <div class="top">
+                <header>สมัครสมาชิก</header>
+            </div>
+            <form action="/user/register" method="post">
+            <div class="two-forms">
+                <div class="input-box">
+                    <input type="text" class="input-field" placeholder="ชื่อ" name="Name">
+                    <i class="bx bx-user"></i>
+                </div>
+                <div class="input-box">
+                    <input type="text" class="input-field" placeholder="นามสกุล" name="LastName">
+                    <i class="bx bx-user"></i>
+                </div>
+            </div>
+            <div class="input-box">
+                <input type="text" class="input-field" placeholder="อีเมล" name="email">
+                <i class="bx bx-envelope"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" placeholder="เลขประจำตัวนักเรียน" name="password">
+                <i class="bx bx-lock-alt"></i>
+            </div>
+            <div class="input-box">
+                <button type="submit" class="submit">สมัครสมาชิก  </button>
+            </div>
+        </form>
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" id="register-check">
+                    <label for="register-check">จดจำรหัสผ่าน</label>
+                </div>
+                <div class="two">
+                    <span>หากมีบัญชีแล้ว <a href="#" onclick="login()" style="color: white;">Login</a></span>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <p>รหัสประจำตัวนักเรียน</p>
-        <input class="pass" type="password" name="password">
-    </div>
-    <br>
-        <button class="login">login</button>
-    </form>
-    <p>ไม่มีรหัสมัครก่อนน้องง <a href="/register">สมัคร</a></p>
+</div>   
+
+
+<script>
+   
+   function myMenuFunction() {
+    var i = document.getElementById("navMenu");
+
+    if(i.className === "nav-menu") {
+        i.className += " responsive";
+    } else {
+        i.className = "nav-menu";
+    }
+   }
+ 
+</script>
+
+<script>
+
+    var a = document.getElementById("loginBtn");
+    var b = document.getElementById("registerBtn");
+    var x = document.getElementById("login");
+    var y = document.getElementById("register");
+
+    function login() {
+        x.style.left = "4px";
+        y.style.right = "-520px";
+        a.className += " white-btn";
+        b.className = "btn";
+        x.style.opacity = 1;
+        y.style.opacity = 0;
+    }
+
+    function register() {
+        x.style.left = "-510px";
+        y.style.right = "5px";
+        a.className = "btn";
+        b.className += " white-btn";
+        x.style.opacity = 0;
+        y.style.opacity = 1;
+    }
+
+</script>
+
 </body>
 </html>
